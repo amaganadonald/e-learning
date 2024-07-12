@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: e-learning
+  datasource:
+    url: jdbc:postgresql://localhost:5432/e-learning
+    username: postgres
+    password: donald
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+server:
+  port: 9888
