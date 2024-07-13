@@ -21,6 +21,15 @@ services:
     volumes:
       - ./data/:/var/lib/postgresql/data
       - postgresql_data:/var/lib/postgresql/data
+  pgadmin4:
+    image: 'elestio/pgadmin'
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: donald9do@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: donald
+      PGADMIN_LISTEN_PORT: '3000'
+    ports:
+      - '3000:3000'
 
 volumes:
   postgresql_data:

@@ -5,10 +5,11 @@ spring:
     url: jdbc:postgresql://localhost:5432/e-learning
     username: postgres
     password: donald
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-    open-in-view: false
+    open-in-view: true
 server:
   port: 9888
