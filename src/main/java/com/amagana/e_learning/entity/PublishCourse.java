@@ -1,5 +1,6 @@
 package com.amagana.e_learning.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -18,9 +19,11 @@ public class PublishCourse extends BaseEntity {
 
     private LocalDateTime publishDate;
     private String comment;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;

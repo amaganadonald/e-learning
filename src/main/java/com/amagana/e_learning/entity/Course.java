@@ -1,5 +1,6 @@
 package com.amagana.e_learning.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -22,6 +23,7 @@ public class Course extends BaseEntity {
     private String description;
     @Version
     private int version;
+    @JsonManagedReference
     @OneToMany(mappedBy = "course")
     @ToString.Exclude
     private Set<PublishCourse> publishCourse;

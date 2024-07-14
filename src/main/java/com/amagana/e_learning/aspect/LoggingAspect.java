@@ -1,11 +1,11 @@
 package com.amagana.e_learning.aspect;
 
+import com.amagana.e_learning.exception.ELearningBusinessException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
@@ -31,7 +31,7 @@ public class LoggingAspect {
     public void logAfterMethod(JoinPoint joinPoint, Object result) throws JsonProcessingException {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         log.info("{}::{} Finished proceed with result {}", signature.getDeclaringTypeName(),
-                signature.getName(),objectMapper.writeValueAsString(result));
+                signature.getName(),result.toString());
     }
 
     @AfterThrowing(value = "allPublicMethods()", throwing = "error")
@@ -39,5 +39,6 @@ public class LoggingAspect {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         log.error("{}::{} Finished proceed with error {}", signature.getDeclaringTypeName(),
                 signature.getName(), error.getMessage());
+        throw new ELearningBusinessException("error occurred with message :" + error.getMessage());
     }
 }
