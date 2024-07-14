@@ -8,7 +8,8 @@ import org.springframework.data.domain.Page;
 
 import java.util.List;
 
-
+@Getter
+@Setter
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class APIResponse<T> {

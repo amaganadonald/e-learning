@@ -24,7 +24,7 @@ public class AuthorController {
     @GetMapping
     public ResponseEntity<APIResponse<List<AuthorDtoResponse>>> getAllAuthor() {
         List<AuthorDtoResponse> authorDtoResponses = authorService.getAllAuthor();
-        return ResponseEntity.ok(APIResponse.multipleResults(
+        return ResponseEntity.status(HttpStatus.OK).body(APIResponse.multipleResults(
                 StatusResponse.SUCCESS, authorDtoResponses
         ));
     }

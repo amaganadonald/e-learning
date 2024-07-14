@@ -2,7 +2,7 @@ package com.amagana.e_learning.exception.handler;
 
 import com.amagana.e_learning.dto.ErrorsDto;
 import com.amagana.e_learning.enums.StatusResponse;
-import com.amagana.e_learning.exception.ELearningBusnessException;
+import com.amagana.e_learning.exception.ELearningBusinessException;
 import com.amagana.e_learning.exception.EntityNotFoundException;
 import com.amagana.e_learning.models.APIResponse;
 import org.springframework.http.HttpStatus;
@@ -34,8 +34,8 @@ public class GlobalExceptionHandler {
         ));
     }
 
-    @ExceptionHandler(ELearningBusnessException.class)
-    public ResponseEntity<APIResponse<String>> businessException(ELearningBusnessException exception) {
+    @ExceptionHandler(ELearningBusinessException.class)
+    public ResponseEntity<APIResponse<String>> businessException(ELearningBusinessException exception) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.singleError(
                 StatusResponse.ERROR, exception.getMessage()
         ));
