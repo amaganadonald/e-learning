@@ -1,4 +1,10 @@
 package com.amagana.e_learning.dto;
 
-public record CourseDtoRequest(String title, String description) {
+import lombok.Builder;
+
+import java.time.LocalDateTime;
+
+@Builder
+public record CourseDtoRequest(String title, String description,
+                               LocalDateTime createdAt, LocalDateTime lastUpdatedAt) {
 }

@@ -2,6 +2,8 @@ package com.amagana.e_learning.repository;
 
 import com.amagana.e_learning.entity.Author;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -19,7 +21,7 @@ public interface AuthorRepository extends JpaRepository<Author, Long> , JpaSpeci
    Optional<Author> findByEmail(String email);
 
    List<Author> findAllByFirstNameInIgnoreCase(List<String> firstName);
-
+   Page<Author> findAllBy(PageRequest pageRequest);
    List<Author> findAllByLastNameStartingWithIgnoreCase(String lastName);
    List<Author> findAllByFirstNameContainingIgnoreCase(String firstName);
    List<Author> findAllByLastNameEndingWithIgnoreCase(String lastName);
